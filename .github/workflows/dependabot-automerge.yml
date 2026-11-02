@@ -10,9 +10,9 @@ permissions:
   pull-requests: write
 jobs:
   automerge:
-    # Only Dependabot PRs. runs-on GitHub-hosted (gh CLI preinstalled); tiny/occasional job.
+    # Metadata-only Dependabot job on local Linux workers; no PR code is executed.
     if: ${{ github.actor == 'dependabot[bot]' }}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, katafract-linux]
     steps:
       - name: Fetch Dependabot metadata
         id: meta
